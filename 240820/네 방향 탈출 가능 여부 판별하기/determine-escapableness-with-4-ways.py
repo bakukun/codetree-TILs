@@ -46,8 +46,8 @@ def push(x,y):
 
 n,m = map(int,(input().split()))
 grid = [list(map(int,(input().split()))) for _ in range(n)]
-visited = [[False for  _ in range(n)] for _ in range(n)]
-answer = [[0 for  _ in range(n)] for _ in range(n)]
+visited = [[False for  _ in range(m)] for _ in range(n)]
+answer = [[0 for  _ in range(m)] for _ in range(n)]
 collect = 0
 
 push(0,0)
