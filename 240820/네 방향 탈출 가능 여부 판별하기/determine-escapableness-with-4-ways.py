@@ -23,7 +23,7 @@ def bfs():
     while q:
         x,y = q.popleft();
 
-        if x == m - 1 and y == n - 1:
+        if x == n - 1 and y == m - 1:
             global collect
             collect = 1
             return  # 도달했으므로 탐색 종료
