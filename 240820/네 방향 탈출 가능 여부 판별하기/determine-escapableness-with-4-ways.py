@@ -7,7 +7,7 @@ order = 1
 q = deque()
 
 def in_range(x,y):
-    return 0 <= x and x < m and 0 <= y and y < n 
+    return 0 <= x and x < n and 0 <= y and y < m
 
 def can_go(x,y):
     if not in_range(x,y):
@@ -46,8 +46,8 @@ def push(x,y):
 
 n,m = map(int,(input().split()))
 grid = [list(map(int,(input().split()))) for _ in range(n)]
-visited = [[False for  _ in range(m)] for _ in range(n)]
-answer = [[0 for  _ in range(m)] for _ in range(n)]
+visited = [[False for _ in range(m)] for _ in range(n)]  # 크기 수정
+answer = [[0 for _ in range(m)] for _ in range(n)] 
 collect = 0
 
 push(0,0)
