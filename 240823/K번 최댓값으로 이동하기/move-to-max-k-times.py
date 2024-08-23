@@ -7,7 +7,6 @@ r, c = map(int, input().split())
 r -= 1 
 c -= 1 
 
-
 dxs, dys = [-1, 0, 1, 0], [0, -1, 0, 1]
 
 def in_range(x, y):
@@ -25,7 +24,7 @@ for _ in range(k):
 
    # bfs
     while q:
-        now_x, now_y = q.pop()
+        now_x, now_y = q.popleft()
 
         for i in range(4):
             nx = now_x + dxs[i]
@@ -33,7 +32,6 @@ for _ in range(k):
 
             if in_range(nx,ny):
 
-            	# 조건3 : 시작 위치의 값보다 작은값 중에 제일 큰 값과 그 좌표를 갱신해야 함
                 if not visited[nx][ny] and arr[nx][ny] < arr[r][c]:
                     q.append([nx, ny])
                     visited[nx][ny] = True
@@ -42,7 +40,6 @@ for _ in range(k):
                         max_num = arr[nx][ny]
                         ans_x, ans_y = nx, ny
                     
-                    # 조건4 : 제일 큰 값을 가진 좌표가 여러개일 경우 먼저 행을 고려하고 그 다음 열을 고려해서 좌표를 갱신해야 함
                     elif arr[nx][ny] == max_num:
                         if ans_x > nx:
                             ans_x, ans_y = nx, ny
@@ -50,8 +47,7 @@ for _ in range(k):
                             if ans_y > ny:
                                 ans_x, ans_y = nx, ny
 
-    # 시작 위치 갱신
-        r = ans_x
-        c = ans_y
+    r = ans_x
+    c = ans_y
 
-print(ans_x,ans_y)
+print(ans_x+1,ans_y+1)
