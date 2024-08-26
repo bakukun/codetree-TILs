@@ -8,9 +8,9 @@ def can_go(x,y):
     return in_range(x,y) and arr[x][y] == 0
 
 def bfs():
-    cnt = 0
+
     for i in range(k):
-        tmp = 1
+        tmp = 0
         r , c = start[i][0] - 1 , start[i][1] - 1 
         check = [[False] * n for _ in range(n)]
 
@@ -20,6 +20,7 @@ def bfs():
         
         while q:
             now_x , now_y = q.popleft() 
+            tmp+=1
 
             for j in range(4):
                 nx , ny = now_x + dxs[j] , now_y + dys[j]
@@ -27,12 +28,7 @@ def bfs():
                 if can_go(nx,ny) and not check[nx][ny]:
                     q.append([nx,ny])
                     check[nx][ny] = True
-                    tmp+=1
-        
-        if (tmp > cnt):
-            cnt = tmp
-
-    return cnt
+    return tmp
 
 
 
