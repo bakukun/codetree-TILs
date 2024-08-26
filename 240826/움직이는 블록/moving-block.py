@@ -1,20 +1,22 @@
 n = int(input())
-num = []
+nums = []
 add = 0
+ans = 0
 min_gap = 10001
 
 for _ in range(n):
     a = int(input())
-    num.append(a)
+    nums.append(a)
     add += a
     
 avg = add // n
 
+maximum = 0
+minimum = 0
+for num in nums:
+    if num > avg:
+        maximum += (num - avg)
+    elif num < avg:
+        minimum += (avg - num)
 
-for i in range(n):
-    tmp = num[i]
-    if ( min_gap > min(min_gap,abs(tmp-avg))):
-        min_gap = abs(tmp-avg)
-        idx = i
-        
-print(num[idx])
+print(maximum)
