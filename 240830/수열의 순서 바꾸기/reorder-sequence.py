@@ -4,7 +4,7 @@ n = int(input())
 arr = list(map(int,input().split()))
 
 cnt = n - 1
-while cnt >= 2:
+while cnt >= 1:
     if arr[cnt] < arr[cnt - 1]:
         break
     cnt -= 1
