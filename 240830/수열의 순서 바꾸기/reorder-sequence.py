@@ -1,18 +1,12 @@
 n = int(input())
-nums = list(map(int,input().split()))
-sorted_nums = sorted(nums)
-cnt = 0
 
-while(nums != sorted_nums):
-    remove = nums.pop(0)
-    #print(remove)
-    loop = 0
-    for i in range(len(nums)-1,0,-1):
-        if(nums[i] > nums[i-1]):
-            loop+=1
-    nums.insert(1+loop, remove)
-    cnt +=1
-    #print(loop,nums)
+# 배열 입력받기
+arr = list(map(int,input().split()))
 
+cnt = n - 1
+while cnt >= 2:
+    if arr[cnt] < arr[cnt - 1]:
+        break
+    cnt -= 1
 
 print(cnt)
