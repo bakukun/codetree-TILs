@@ -9,7 +9,7 @@ def fibo(x):
     elif x == 2:               
         memo[x] = 2   
     else:
-        memo[x] = fibo(x-1) + fibo(x-2)
+        memo[x] = (fibo(x-1) + fibo(x-2)) % 10007
     return memo[x]
 
 
