@@ -1,51 +1,47 @@
+from itertools import combinations
 from collections import deque
-from itertools import combinations 
 
+n, k, u, d = map(int, input().split())
+arr = [list(map(int, input().split())) for _ in range(n)]
+dxs = [0, 1, 0, -1]
+dys = [1, 0, -1, 0]
 
-n, k, u, d = map(int,input().split())
-arr = [list(map(int,input().split())) for _ in range(n)]
-dxs = [1,0,-1,0]
-dys = [0,1,0,-1]
-size = []
-cnt = 0
-visited = [[False] * n for _ in range(n)]
+coords = [(i, j) for i in range(n) for j in range(n)]
+start_positions = list(combinations(coords, k))
 
-def in_range(x,y):
-    return 0 <= x < n and 0 <= y < n
+maximum = 0
 
-
-
-# 현재 위치에서 차이나는거 몇개 갈수 있는지 카운트 
-# 갈수 있는 것들 visited 반환
-
-def bfs(x,y):
+def bfs(x, y, visited):
     q = deque()
-    q.append((x,y))
-
+    q.append((x, y))
     visited[x][y] = True
-    cnt = 1
-
+    count = 1
     while q:
-        dx , dy = q.popleft()
+        cx, cy = q.popleft()
+        for dx, dy in zip(dxs, dys):
+            nx, ny = cx + dx, cy + dy
+            if 0 <= nx < n and 0 <= ny < n:
+                if not visited[nx][ny]:
+                    diff = abs(arr[cx][cy] - arr[nx][ny])
+                    if u <= diff <= d:
+                        visited[nx][ny] = True
+                        count += 1
+                        q.append((nx, ny))
+    return count
 
-        for i , j in zip(dxs,dys):
-            nx = i + dx
-            ny = j + dy
+for starts in start_positions:
+    visited = [[False]*n for _ in range(n)]
+    total_cells = 0
+    valid = True
+    for x, y in starts:
+        if visited[x][y]:
+            # 시작 위치가 이미 방문되었으면 이 조합은 유효하지 않음
+            valid = False
+            break
+        else:
+            count = bfs(x, y, visited)
+            total_cells += count
+    if valid:
+        maximum = max(maximum, total_cells)
 
-            if(in_range(nx,ny)):
-                minus = abs(arr[dx][dy] - arr[nx][ny]) 
-
-                if (not visited[nx][ny] and u <= minus <= d):
-                    cnt += 1
-                    visited[nx][ny] = True
-                    q.append((nx,ny))
-    return cnt
-
-
-for i in range(n):
-    for j in range(n):
-        size.append(bfs(i,j))
-
-size.sort(reverse=True)
-        
-print(sum(size[:k]))
+print(maximum)
