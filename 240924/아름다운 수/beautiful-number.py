@@ -9,9 +9,8 @@ def is_beautiful(answer):
     for i in range(1,len(answer)):
         if answer[i] == prev_digit:
             count += 1
-
         else:
-            if (count != prev_digit):
+            if (count % prev_digit != 0 ):
                 return False
             count = 1
             prev_digit = answer[i]
