@@ -85,7 +85,7 @@ for num in comb:
         x3 , y3 = num[2]
         visited , tmp = bfs(x1,x2) 
         visited , tmp2 = bfs2(x2,y2,visited)
-        visited , tmp3 = bfs3(x3,y3,visited)
+        visited , tmp3 = bfs2(x3,y3,visited)
         maximum = max(maximum,  tmp + tmp2 + tmp3)
         
 print(maximum)
