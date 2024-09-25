@@ -73,7 +73,6 @@ for i in range(n):
     for j in range(n):
         if (bomb_list[i][j] == 1):
             bomb_idx.append((i,j))
-            bomb_m[i][j] = 1 
             bomb_count += 1
  
 choose(0)
