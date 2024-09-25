@@ -1,7 +1,6 @@
-bomb_1 = [(0,-2),(0,-1),(0,1),(0,2)]
+bomb_1 = [(-2,0),(-1,0),(1,0),(2,0)]
 bomb_2 = [(1,0),(0,1),(-1,0),(0,-1)]
 bomb_3 = [(1,1),(-1,1),(-1,-1),(1,-1)]
-
 
 # 1. 입력 값 받기
 n = int(input())
@@ -12,6 +11,7 @@ bomb_count = 0 # 폭탄 개수
 ans = []
 arr = []
 
+#2. 초기화 함수
 def bomb_init():
     bomb_m = [[0 for _ in range(n)] for _ in range(n)]
     for i in range(len(bomb_idx)):
