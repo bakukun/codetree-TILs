@@ -12,7 +12,7 @@ def check():
     tmp_line.sort(key=lambda x: (x[1], x[0]))
 
     for start , end in tmp_line:
-        if endPoint <= start:
+        if endPoint < start:
             tmp += 1
             endPoint = end
     return tmp
