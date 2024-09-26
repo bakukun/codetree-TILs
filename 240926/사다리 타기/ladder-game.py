@@ -10,9 +10,11 @@ def init_position():
         start_position.append(i)
 
 def backtracking(start, num, add_row):
+    
+    global minimum
 
     if (position_check(add_row) == position):  
-        ans_row.append(add_row[:])
+        minimum = min(minimum, len(add_row))
         return
     
     if(num == len(row_arr)):
@@ -32,20 +34,12 @@ row_arr.sort(key=lambda x:x[-1])
 position = []
 start_position = []
 
-ans_cnt = []
 ans_row = []
 add_row = []
+minimum = m
 
 init_position()
 position = position_check(row_arr)
 backtracking(0,0,add_row)
-
-minimum = m
-if (len(ans_row) > 0):
-    for i in range(len(ans_row)):
-        if (minimum > len(ans_row[i])):
-            minimum = len(ans_row[i])
-else:
-    minimum = 0
 
 print(minimum)
