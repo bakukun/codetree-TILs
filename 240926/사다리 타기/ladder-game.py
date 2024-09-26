@@ -9,7 +9,7 @@ def init_position():
     for i in range(1,n+1):
         start_position.append(i)
 
-def backtracking(start, num, add_row):
+def backtracking(start, num):
     
     global minimum
 
@@ -22,7 +22,7 @@ def backtracking(start, num, add_row):
     
     for i in range(start,len(row_arr)):
         add_row.append(row_arr[i])
-        backtracking(i+1,num+1,add_row)
+        backtracking(i+1,num+1)
         add_row.pop()
 
     return
@@ -40,6 +40,6 @@ minimum = m
 
 init_position()
 position = position_check(row_arr)
-backtracking(0,0,add_row)
+backtracking(0,0)
 
 print(minimum)
