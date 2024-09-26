@@ -22,7 +22,6 @@ def backtracking(start, num, add_row):
         add_row.append(row_arr[i])
         backtracking(i+1,num+1,add_row)
         add_row.pop()
-        backtracking(i+1,num+1,add_row)
 
     return
 
