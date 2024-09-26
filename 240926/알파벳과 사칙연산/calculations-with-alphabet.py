@@ -9,7 +9,7 @@ unique_string.sort()
 length = len(unique_string)
 
 string_list = []
-maximum = 0
+maximum = -2e9
 
 def backtracking(num):
     global maximum
@@ -41,9 +41,6 @@ def compute(string,string_list):
             tmp_sum -= string_list[idx_end]
         if (math == '*'):
             tmp_sum *= string_list[idx_end]      
-
-        #print(tmp_sum)
-        #print(tmp_sum,math,end," ",string_list[idx_end],i)
 
     return tmp_sum
 
