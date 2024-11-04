@@ -5,7 +5,7 @@ def calc_dist(a, b): # 두 포인트의 거리 구하기
 
 def backtrack(idx,cnt):
     global ans, mini
-    print(ans,idx,cnt)
+    #print(ans,idx,cnt)
     #코인 종류 3개시, mini 갱신
     if (cnt == 3):
         tmp = 0
