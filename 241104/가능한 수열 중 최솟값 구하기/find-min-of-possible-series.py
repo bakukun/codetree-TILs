@@ -1,12 +1,8 @@
 def is_okay(ans):
-    length = len(ans) // 2
-    tmp = 1
-    for tmp in range(1, length + 1):
-        for i in range(len(ans) - tmp):
-            if (i + tmp * 2 > len(ans)):
-                continue
-            if ans[i:i + tmp] == ans[i + tmp:i + tmp * 2]:
-                return False
+    length = len(ans)
+    for l in range(1, length // 2 + 1):
+        if ans[-l:] == ans[-2*l:-l]:
+            return False
     return True
 
 
@@ -21,7 +17,8 @@ def backtrack(n):
 
     for i in num_list:
         ans.append(i)
-        backtrack(n + 1)
+        if is_okay(ans):
+            backtrack(n + 1)
         ans.pop()
 
 
