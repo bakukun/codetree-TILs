@@ -1,31 +1,33 @@
 def is_okay(ans):
-    length = len(ans)
-    for l in range(1, length // 2 + 1):
-        if ans[-l:] == ans[-2*l:-l]:
-            return False
+    length = len(ans) // 2
+    for tmp in range(1, length + 1):
+        for i in range(len(ans) - tmp):
+            if ans[i:i + tmp] == ans[i + tmp:i + tmp * 2]:
+                return False
     return True
 
-
 def backtrack(n):
-    global ans, minimum
-    #print(ans)
-    if (n == N):
-        if (is_okay(ans)):
-            minimum = min(minimum, int("".join(ans)))
-            #print(minimum)
+    global ans, found
+    
+    if found:
+        return  
+
+    if n == N:
+        print("".join(ans))
+        found = True  
         return
 
     for i in num_list:
         ans.append(i)
         if is_okay(ans):
             backtrack(n + 1)
+            if found:
+                return 
         ans.pop()
-
 
 N = int(input())
 num_list = ['4', '5', '6']
 ans = []
-minimum = int('9' * N)
+found = False
 
 backtrack(0)
-print(minimum)
