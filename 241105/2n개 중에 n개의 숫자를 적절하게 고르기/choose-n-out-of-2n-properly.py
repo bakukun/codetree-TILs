@@ -4,28 +4,29 @@ def backtracking(idx,cnt):
     if cnt == N:
 
         other = []
-        n_visited = [False] * len(n_list)
-        sum_ans = 0
-        sum_other = 0
 
-        for n_idx in ans:
-            n_visited[n_idx] = True
-            sum_ans += n_list[n_idx]
+        n_visited = [False] * len(n_list)
+
+        for num in ans:
+            for j in range(len(n_list)):
+                if num == n_list[j] and n_visited[j] == False:
+                    n_visited[j] = True
+                    break
 
         for i in range(len(n_visited)):
-            if not n_visited[i]:
-                sum_other += n_list[i]
+            if(n_visited[i] == False):
+                other.append(n_list[i])
 
         #print(ans,other)
-        mini = min(mini,abs(sum_ans-sum_other))
+        mini = min(mini,abs(sum(ans)-sum(other)))
         return 
 
     if(idx == len(n_list)-1):
         return
 
     
-    ans.append(idx)
-    backtracking(idx,cnt+1)
+    ans.append(n_list[idx])
+    backtracking(idx+1,cnt+1)
     ans.pop()
     
     backtracking(idx+1,cnt)
