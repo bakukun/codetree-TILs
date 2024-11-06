@@ -8,6 +8,6 @@ for i in range(n-2):
         for k in range(3):
             for l in range(3):
                 tmp += arr[i+k][j+l]
-    maxi = max(maxi,tmp)
+        maxi = max(maxi,tmp)
         
 print(maxi)
