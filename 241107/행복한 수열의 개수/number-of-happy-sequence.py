@@ -11,23 +11,25 @@ if(m>1):
                     cnt += 2
                 else:
                     cnt += 1
+                if (cnt >= m):
+                    ans += 1
+                    break  
             else:
                 cnt = 0
-        if (cnt >= m):
-            ans += 1   
 
     for i in range(len(arr)):
         cnt = 0 
-        for j in range(1,len(arr)-1):
+        for j in range(1,len(arr)):
             if(arr[j-1][i] == arr[j][i]):
                 if(cnt == 0):
                     cnt += 2
                 else:
                     cnt += 1
+                if (cnt >= m):
+                    ans += 1
+                    break  
             else:
                 cnt = 0
-        if (cnt >= m):
-            ans += 1   
     print(ans)  
 else:
     print(n*2)
